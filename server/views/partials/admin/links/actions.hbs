@@ -19,6 +19,7 @@
   </a>
   <button
     class="action qrcode"
+    title="QR Code"
     hx-on:click="handleQRCode(this, 'admin-table-dialog')"
     data-url="{{link.url}}"
   >
@@ -26,6 +27,7 @@
   </button>
   <button 
     class="action edit"
+    title="Edit"
     hx-trigger="click queue:none"
     hx-ext="path-params"
     hx-get="/admin/link/edit/{id}" 
@@ -48,7 +50,8 @@
   </button>
   {{#unless banned}}
     <button 
-      class="action ban" 
+      class="action ban"
+      title="Ban link"
       hx-on:click='openDialog("admin-table-dialog")' 
       hx-get="/confirm-link-ban" 
       hx-target="#admin-table-dialog .content-wrapper" 
@@ -59,7 +62,8 @@
     </button>
   {{/unless}}
   <button 
-    class="action delete" 
+    class="action delete"
+    title="Delete"
     hx-on:click='openDialog("admin-table-dialog")' 
     hx-get="/confirm-link-delete" 
     hx-target="#admin-table-dialog .content-wrapper" 

@@ -19,6 +19,7 @@
   </a>
   <button
     class="action qrcode"
+    title="QR Code"
     hx-on:click="handleQRCode(this, 'link-dialog')"
     data-url="{{link.url}}"
   >
@@ -26,6 +27,7 @@
   </button>
   <button 
     class="action edit"
+    title="Edit"
     hx-trigger="click queue:none"
     hx-ext="path-params"
     hx-get="/link/edit/{id}" 
@@ -47,7 +49,8 @@
     {{> icons/pencil}}
   </button>
   <button 
-    class="action delete" 
+    class="action delete"
+    title="Delete"
     hx-on:click='openDialog("link-dialog")' 
     hx-get="/confirm-link-delete" 
     hx-target="#link-dialog .content-wrapper" 
