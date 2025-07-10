@@ -91,14 +91,25 @@ function handleQRCode(element, id) {
   if (!dialogContent) return;
   openDialog(id, "qrcode");
   dialogContent.textContent = "";
-  const qrcode = new QRCode(dialogContent, {
+  
+  // Create container for QR code and buttons
+  const qrContainer = document.createElement("div");
+  qrContainer.style.textAlign = "center";
+  dialogContent.appendChild(qrContainer);
+  
+  // Create QR code
+  const qrcode = new QRCode(qrContainer, {
     text: element.dataset.url,
     width: 200,
     height: 200,
     colorDark : "#000000",
     colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
-  });   
+  });
+  
+  // Add download buttons (functionality from qr-download.js)
+  const buttonContainer = addQRDownloadButtons(qrContainer, element.dataset.url);
+  dialogContent.appendChild(buttonContainer);
 }
 
 // copy the link to clipboard
